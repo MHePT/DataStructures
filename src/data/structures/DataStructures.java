@@ -35,8 +35,9 @@ public class DataStructures {
         }
         /*Do The Same Block of Code While the Temporary Stack is NOT Empty
         Take The Value in Temporary Stack and Return it to The Original Stack*/
-        while (!Temp.isEmpty()) 
+        while (!Temp.isEmpty()) {
             S.Push(Temp.Pop());
+        }
     }
 
     //Searching Stack For Target Value
@@ -51,8 +52,9 @@ public class DataStructures {
         while (!S.isEmpty() && Runner != null) {
 
             //If The Target Value Found in This Node End The Function And Return True As An Output
-            if (Runner.Data == Target) 
+            if (Runner.Data == Target) {
                 return true;
+            }
 
             //If Not Found in This Node Move The Pointer To Next Node
             Runner = Runner.Next;
@@ -95,9 +97,10 @@ public class DataStructures {
 
         //The Base Case
         //If The Runner Reached The End.Then,End The Function and return 0 as an Output 
-        if (Runner == null) 
+        if (Runner == null) {
             return 0;
-        
+        }
+
 
         /*If The Runner Did Not Reach The End.Then,End The Function After
         1.Calling Yourself again with Next Node As an Input (The Pointer of second calling
@@ -170,47 +173,91 @@ public class DataStructures {
         return false;
 
     }
-    
-    LinkedStack Sort(LinkedStack S){
+
+    boolean Compare_Lists(Node L1, Node L2) {
+
+        Node Run1 = L1, Run2 = L2;
+
+        if (Run1 == null && Run2 == null) {
+            return true;
+        }
+
+        if (Run1 == null || Run2 == null) {
+            return false;
+        }
+
+        while (Run1 == null && Run2 == null) {
+
+            if (Run1.Data != Run2.Data) {
+                return false;
+            }
+
+            Run1 = Run1.Next;
+            Run2 = Run2.Next;
+        }
+
+        return false;
+    }
+
+    boolean Compare_Lists_R(Node L1, Node L2) {
+
+        if (L1 == null && L2 == null) {
+            return true;
+        }
+        if (L1 == null || L2 == null) {
+            return false;
+        }
+        if (L1.Data != L2.Data) {
+            return false;
+        }
+
+        return Compare_Lists_R(L1.Next, L2.Next);
+    }
+
+    LinkedStack Sort(LinkedStack S) {
         LinkedStack Temp = new LinkedStack();
-        
-        while(!S.isEmpty()){
+
+        while (!S.isEmpty()) {
             int x = S.Pop();
-            while(!Temp.isEmpty() && Temp.Peek()>x)
+            while (!Temp.isEmpty() && Temp.Peek() > x) {
                 S.Push(Temp.Pop());
+            }
             Temp.Push(x);
         }
-        
+
         return Temp;
     }
-    
-    void Calc(Node L){
-        int counter =0,sum=0,max,min;
+
+    void Calc(Node L) {
+        int counter = 0, sum = 0, max, min;
         double avg;
         max = min = L.Data;
-        Node t=L;
-        while(t != null){
+        Node t = L;
+        while (t != null) {
             sum += t.Data;
-            counter ++;
-            if(t.Data>max)
+            counter++;
+            if (t.Data > max) {
                 max = t.Data;
-            if(t.Data<min)
+            }
+            if (t.Data < min) {
                 max = t.Data;
+            }
             t = t.Next;
         }
-        
-        avg = sum/counter;
+
+        avg = sum / counter;
         System.out.println("Max: " + max);
         System.out.println("Min: " + min);
         System.out.println("Avg: " + avg);
-        
+
     }
-    
-    void swap(Node first,Node second){
-        Node t1,t2,t3;
+
+    void swap(Node first, Node second) {
+        Node t1, t2, t3;
         t1 = t3 = first;
-        while(t3.Next.Next != null)
+        while (t3.Next.Next != null) {
             t3 = t3.Next;
+        }
         t2 = t3.Next;
         t2.Next = t1.Next;
         t3.Next = t1;
