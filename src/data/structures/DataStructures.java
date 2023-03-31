@@ -7,9 +7,9 @@ public class DataStructures {
         //test is an ID(identifier) of Object of user Defined Class LinkedStack 
         LinkedStack test = new LinkedStack();
 
-        for (int i = 0; i < 5; i++) {
+        for (int i = 0; i < 5; i++) 
             test.Push(i); // Filling Stack with values from 0 to 4
-        }
+        
 
         //Dispaly Stack in Reverse Order Without Changing the Stack
         Display_Reverse(test);
@@ -35,9 +35,9 @@ public class DataStructures {
         }
         /*Do The Same Block of Code While the Temporary Stack is NOT Empty
         Take The Value in Temporary Stack and Return it to The Original Stack*/
-        while (!Temp.isEmpty()) {
+        while (!Temp.isEmpty()) 
             S.Push(Temp.Pop());
-        }
+        
     }
 
     //Searching Stack For Target Value
@@ -52,9 +52,9 @@ public class DataStructures {
         while (!S.isEmpty() && Runner != null) {
 
             //If The Target Value Found in This Node End The Function And Return True As An Output
-            if (Runner.Data == Target) {
+            if (Runner.Data == Target) 
                 return true;
-            }
+            
 
             //If Not Found in This Node Move The Pointer To Next Node
             Runner = Runner.Next;
@@ -97,9 +97,9 @@ public class DataStructures {
 
         //The Base Case
         //If The Runner Reached The End.Then,End The Function and return 0 as an Output 
-        if (Runner == null) {
+        if (Runner == null) 
             return 0;
-        }
+        
 
 
         /*If The Runner Did Not Reach The End.Then,End The Function After
@@ -158,10 +158,10 @@ public class DataStructures {
             Node BeforeLastNode = TopNode;
 
             //Do The Same Block of Code While the Pointer Did NOT Reach Before Last Node
-            while (BeforeLastNode.Next.Next != null) {
+            while (BeforeLastNode.Next.Next != null) 
                 //Move The Pointer To Next Node
                 BeforeLastNode = BeforeLastNode.Next;
-            }
+            
 
             //Make The Before Last Node Next Points To Null Instead Of Last Node
             BeforeLastNode = null;
@@ -178,19 +178,19 @@ public class DataStructures {
 
         Node Run1 = L1, Run2 = L2;
 
-        if (Run1 == null && Run2 == null) {
+        if (Run1 == null && Run2 == null) 
             return true;
-        }
+        
 
-        if (Run1 == null || Run2 == null) {
+        if (Run1 == null || Run2 == null) 
             return false;
-        }
+        
 
         while (Run1 == null && Run2 == null) {
 
-            if (Run1.Data != Run2.Data) {
+            if (Run1.Data != Run2.Data) 
                 return false;
-            }
+            
 
             Run1 = Run1.Next;
             Run2 = Run2.Next;
@@ -201,15 +201,15 @@ public class DataStructures {
 
     boolean Compare_Lists_R(Node L1, Node L2) {
 
-        if (L1 == null && L2 == null) {
+        if (L1 == null && L2 == null) 
             return true;
-        }
-        if (L1 == null || L2 == null) {
+        
+        if (L1 == null || L2 == null) 
             return false;
-        }
-        if (L1.Data != L2.Data) {
+        
+        if (L1.Data != L2.Data) 
             return false;
-        }
+        
 
         return Compare_Lists_R(L1.Next, L2.Next);
     }
@@ -219,9 +219,10 @@ public class DataStructures {
 
         while (!S.isEmpty()) {
             int x = S.Pop();
-            while (!Temp.isEmpty() && Temp.Peek() > x) {
+            
+            while (!Temp.isEmpty() && Temp.Peek() > x) 
                 S.Push(Temp.Pop());
-            }
+            
             Temp.Push(x);
         }
 
@@ -236,12 +237,13 @@ public class DataStructures {
         while (t != null) {
             sum += t.Data;
             counter++;
-            if (t.Data > max) {
+            
+            if (t.Data > max) 
                 max = t.Data;
-            }
-            if (t.Data < min) {
+            
+            if (t.Data < min) 
                 max = t.Data;
-            }
+            
             t = t.Next;
         }
 
@@ -255,9 +257,10 @@ public class DataStructures {
     void swap(Node first, Node second) {
         Node t1, t2, t3;
         t1 = t3 = first;
-        while (t3.Next.Next != null) {
+        
+        while (t3.Next.Next != null) 
             t3 = t3.Next;
-        }
+        
         t2 = t3.Next;
         t2.Next = t1.Next;
         t3.Next = t1;

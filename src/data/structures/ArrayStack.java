@@ -1,6 +1,7 @@
 package data.structures;
 
 public class ArrayStack {
+    
     int[] Arr;
     int Top;
     int Size;
