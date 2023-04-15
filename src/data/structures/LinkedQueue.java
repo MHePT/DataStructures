@@ -3,7 +3,7 @@ package data.structures;
 
 public class LinkedQueue {
     
-    Node Front ,Rear;
+    Node<Integer> Front ,Rear;
 
     public LinkedQueue() {
         Front = Rear = null;

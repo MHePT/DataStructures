@@ -2,7 +2,7 @@ package data.structures;
 
 public class LinkedStack {
 
-    Node Top = null;
+    Node<Integer> Top = null;
 
     //Checks if Top points to Null (Nothing)
     boolean isEmpty() {
