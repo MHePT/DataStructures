@@ -82,71 +82,65 @@ public class Project1 {
         {
             if(isOperator(postfix.charAt(i))){
                 
-                if(postfix.charAt(i) == '^'){
-                    
-                    double right = stackCalc.Pop();
-                    double left = stackCalc.Pop();
-                    
-                    stackCalc.Push(Math.pow(left, right));
-                    
-                }else if(postfix.charAt(i) == '*'){
-                    
-                    double right = stackCalc.Pop();
-                    double left = stackCalc.Pop();
-                    
-                    stackCalc.Push(left*right);
-                    
-                }else if(postfix.charAt(i) == '/'){
-                    
-                    double right = stackCalc.Pop();
-                    double left = stackCalc.Pop();
-                    
-                    stackCalc.Push(left/right);
-                    
-                }else if(postfix.charAt(i) == '+'){
-                    
-                    double right = stackCalc.Pop();
-                    double left = stackCalc.Pop();
-                    
-                    stackCalc.Push(left+right);
-                    
-                }else if(postfix.charAt(i) == '-'){
-                    
-                    double right = stackCalc.Pop();
-                    double left = stackCalc.Pop();
-                    
-                    stackCalc.Push(left-right);
-                    
-                }else
-                    return 0;
+                switch (postfix.charAt(i)) {
+                    case '^':
+                        {
+                            double right = stackCalc.Pop();
+                            double left = stackCalc.Pop();
+                            stackCalc.Push(Math.pow(left, right));
+                            break;
+                        }
+                    case '*':
+                        {
+                            double right = stackCalc.Pop();
+                            double left = stackCalc.Pop();
+                            stackCalc.Push(left*right);
+                            break;
+                        }
+                    case '/':
+                        {
+                            double right = stackCalc.Pop();
+                            double left = stackCalc.Pop();
+                            stackCalc.Push(left/right);
+                            break;
+                        }
+                    case '+':
+                        {
+                            double right = stackCalc.Pop();
+                            double left = stackCalc.Pop();
+                            stackCalc.Push(left+right);
+                            break;
+                        }
+                    case '-':
+                        {
+                            double right = stackCalc.Pop();
+                            double left = stackCalc.Pop();
+                            stackCalc.Push(left-right);
+                            break;
+                        }
+                    default:
+                        return 0;
+                }
                     
                     
             }else 
-                stackCalc.Push(Double.parseDouble(""+postfix.charAt(i)));
+                stackCalc.Push(Double.valueOf(postfix.charAt(i)));
         }
         
         return stackCalc.Pop();
     }
 
     private static int priority(char operator) {
-        switch (operator) {
-            case '^':
-                return 3;
-            case '*':
-                return 2;
-            case '/':
-                return 2;
-            case '+':
-                return 1;
-            case '-':
-                return 1;
-            case '(':
-                return 0;
-            case ')':
-                return 0;
-            default:
-                return -1;
-        }
+        return switch (operator) {
+            case '^' -> 3;
+            case '*' -> 2;
+            case '/' -> 2;
+            case '+' -> 1;
+            case '-' -> 1;
+            case '(' -> 0;
+            case ')' -> 0;
+            default -> -1;
+        };
     }
     
     private static boolean isValid_Infix(String infix){
