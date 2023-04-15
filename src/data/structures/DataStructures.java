@@ -140,7 +140,7 @@ public class DataStructures {
                 //Make The Next of New Node is The Next of Pointed Node
                 newNode.Next = Runner.Next;
                 //Make The Next of The Pointed is New Node
-                Runner = newNode;
+                Runner.Next = newNode;
                 //End The Function And Return True As An Output
                 return true;
             }
