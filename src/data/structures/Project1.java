@@ -1,47 +1,54 @@
 package data.structures;
 
-import java.util.Stack;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class Project1 {
 
-    private static Stack<Character> stack = new Stack<>();
+    private static Stack<Character> stack;
+    private static Stack<Double> stackCalc;
     private static String postfix = "";
 
-    static void infix_postfix(String infix) {
+    static String infix_postfix(String infix) {
+        
+        stack = new Stack<>();
+        
+        if(!isValid_Infix(infix))
+            return "UnValid Expression";
 
         for (int i = 0; i < infix.length(); i++) {
 
-            if (priority(infix.charAt(i)) != -1 && !stack.empty()) {
+            if (priority(infix.charAt(i)) != -1 && !stack.isEmpty()) {
 
-                if (priority(infix.charAt(i)) > priority(stack.peek()) || priority(infix.charAt(i)) == 0) {
+                if (priority(infix.charAt(i)) > priority(stack.Peek()) || priority(infix.charAt(i)) == 0) {
 
                     if (infix.charAt(i) == ')') {
 
-                        while (stack.peek() != '(') 
-                            postfix += stack.pop();
+                        while (stack.Peek() != '(') 
+                            postfix += stack.Pop();
                         
 
-                        stack.pop();
+                        stack.Pop();
 
                     } else 
 
-                        stack.push(infix.charAt(i));
+                        stack.Push(infix.charAt(i));
 
                     
 
                 } else {
 
-                    while (priority(infix.charAt(i)) <= priority(stack.peek())) 
-                        postfix += stack.pop();
+                    while (priority(infix.charAt(i)) <= priority(stack.Peek())) 
+                        postfix += stack.Pop();
                     
 
-                    stack.push(infix.charAt(i));
+                    stack.Push(infix.charAt(i));
 
                 }
 
-            } else if (priority(infix.charAt(i)) != -1 && stack.empty())
+            } else if (priority(infix.charAt(i)) != -1 && stack.isEmpty())
 
-                stack.push(infix.charAt(i));
+                stack.Push(infix.charAt(i));
 
               else 
 
@@ -52,16 +59,73 @@ public class Project1 {
         }
 
         while (!stack.isEmpty()) 
-            if (priority(stack.peek()) != 0) 
-                postfix += stack.pop();
+            if (priority(stack.Peek()) != 0) 
+                postfix += stack.Pop();
             else 
-                stack.pop();
+                stack.Pop();
                 
              
-        System.out.println(postfix);
+        return postfix;
             
         
 
+    }
+    
+    static double postfix_value(String postfix){
+        
+        if(!isValid_Postfix(postfix))
+            return 0.0;
+        
+        stackCalc = new Stack<>();
+        
+        for(int i = 0;i<postfix.length();i++)
+        {
+            if(isOperator(postfix.charAt(i))){
+                
+                if(postfix.charAt(i) == '^'){
+                    
+                    double right = stackCalc.Pop();
+                    double left = stackCalc.Pop();
+                    
+                    stackCalc.Push(Math.pow(left, right));
+                    
+                }else if(postfix.charAt(i) == '*'){
+                    
+                    double right = stackCalc.Pop();
+                    double left = stackCalc.Pop();
+                    
+                    stackCalc.Push(left*right);
+                    
+                }else if(postfix.charAt(i) == '/'){
+                    
+                    double right = stackCalc.Pop();
+                    double left = stackCalc.Pop();
+                    
+                    stackCalc.Push(left/right);
+                    
+                }else if(postfix.charAt(i) == '+'){
+                    
+                    double right = stackCalc.Pop();
+                    double left = stackCalc.Pop();
+                    
+                    stackCalc.Push(left+right);
+                    
+                }else if(postfix.charAt(i) == '-'){
+                    
+                    double right = stackCalc.Pop();
+                    double left = stackCalc.Pop();
+                    
+                    stackCalc.Push(left-right);
+                    
+                }else
+                    return 0;
+                    
+                    
+            }else 
+                stackCalc.Push(Double.parseDouble(""+postfix.charAt(i)));
+        }
+        
+        return stackCalc.Pop();
     }
 
     private static int priority(char operator) {
@@ -85,8 +149,33 @@ public class Project1 {
         }
     }
     
-    private static boolean isValid(String infix){
-        return false;
+    private static boolean isValid_Infix(String infix){
+        
+        Pattern pattern = Pattern.compile("[a-zA-Z]");
+        Matcher matcher = pattern.matcher(infix);
+        
+        return matcher.find();
+    }
+    
+    private static boolean isValid_Postfix(String postfix){
+        
+        Pattern pattern = Pattern.compile("[0-9]");
+        Matcher matcher = pattern.matcher(postfix);
+        
+        return matcher.find();
+    }
+    
+    private static boolean isOperator(char operator){
+        switch (operator) {
+            case '^':
+            case '*':
+            case '/':
+            case '+':
+            case '-':
+                return true;
+            default:
+                return false;
+        }
     }
 
 }

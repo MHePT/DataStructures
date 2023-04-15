@@ -18,14 +18,9 @@ public class DataStructures {
       //System.out.println(Search(test, 2)); // Prints true
             
       
-      Project1.infix_postfix("(A/B*(C+(D-E))");
+      System.out.println(Project1.infix_postfix("(A/B*(C+(D-E))"));
       
-      
-      
-      
-      
-      
-      
+      System.out.println(Project1.postfix_value("234+*"));
       
     }
 
@@ -57,7 +52,7 @@ public class DataStructures {
 
         /*Make a Pointer Run Through The Stack Without Manipulating(Playing with) 
         The Top Pointer in Stack*/
-        Node Runner = S.Top;
+        Node<Integer> Runner = S.Top;
 
         //Do The Same Block of Code While the Stack is NOT Empty and Pointer Did NOT Reach The End
         while (!S.isEmpty() && Runner != null) {
@@ -132,7 +127,7 @@ public class DataStructures {
 
         /*Make a Pointer Run Through The Stack Without Manipulating(Playing with) 
         The Top Pointer in Stack*/
-        Node Runner = TopNode;
+        Node<Integer> Runner = TopNode;
 
         //Do The Same Block of Code While the Pointer Did NOT Reach The End
         while (Runner != null) {
@@ -240,11 +235,11 @@ public class DataStructures {
         return Temp;
     }
 
-    void Calc(Node L) {
+    void Calc(Node<Integer> L) {
         int counter = 0, sum = 0, max, min;
         double avg;
         max = min = L.Data;
-        Node t = L;
+        Node<Integer> t = L;
         while (t != null) {
             sum += t.Data;
             counter++;
