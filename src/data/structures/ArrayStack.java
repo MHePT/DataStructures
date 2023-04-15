@@ -51,4 +51,13 @@ public class ArrayStack {
         //End The Function and Return -1 (Error) As Output (Data Not Removed)
         return -1;
     }
+    
+    int Peek() {
+        /*If The Satck is NOT Empty It will
+        End The Function And Return The Data as an Output*/
+        if (!isEmpty()) 
+            return Arr[Top];
+        //End The Function And Return -1 (Error) as an Output(Stack is Empty)
+        return -1;
+    }
 }
