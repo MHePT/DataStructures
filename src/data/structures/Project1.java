@@ -7,11 +7,12 @@ public class Project1 {
 
     private static Stack<Character> stack;
     private static Stack<Double> stackCalc;
-    private static String postfix = "";
+    private static String postfix;
 
     static String infix_postfix(String infix) {
         
         stack = new Stack<>();
+        postfix = "";
         
         if(!isValid_Infix(infix))
             return "UnValid Expression";
