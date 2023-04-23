@@ -1,5 +1,7 @@
 package data.structures;
 
+import java.util.Scanner;
+
 public class DataStructures {
 
     public static void main(String[] args) {
@@ -18,9 +20,17 @@ public class DataStructures {
       //System.out.println(Search(test, 2)); // Prints true
             
       
-      System.out.println(Project1.infix_postfix("(A/B*(C+(D-E))"));
+      Scanner input = new Scanner(System.in);
       
-      System.out.println(Project1.postfix_value("234+*"));
+      String s = input.nextLine();
+      
+      //System.out.println(Project1.infix_postfix("(A/B*(C+(D-E))"));
+      System.out.println(Project1.infix_postfix(s));
+      
+      s = input.nextLine();
+      
+      //System.out.println(Project1.postfix_value("234+*"));
+      System.out.println(Project1.postfix_value(s));
       
     }
 
