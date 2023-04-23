@@ -27,48 +27,36 @@ public class Project1 {
                         while (stack.Peek() != '(') 
                             postfix += stack.Pop();
                         
-
                         stack.Pop();
 
                     } else 
 
                         stack.Push(infix.charAt(i));
 
-                    
-
                 } else {
 
                     while (priority(infix.charAt(i)) <= priority(stack.Peek())) 
                         postfix += stack.Pop();
                     
-
                     stack.Push(infix.charAt(i));
-
                 }
 
             } else if (priority(infix.charAt(i)) != -1 && stack.isEmpty())
-
                 stack.Push(infix.charAt(i));
 
               else 
-
                 postfix += infix.charAt(i);
-
-            
 
         }
 
         while (!stack.isEmpty()) 
             if (priority(stack.Peek()) != 0) 
                 postfix += stack.Pop();
+            
             else 
-                stack.Pop();
-                
+                stack.Pop();      
              
         return postfix;
-            
-        
-
     }
     
     static double postfix_value(String postfix){
@@ -124,7 +112,7 @@ public class Project1 {
                     
                     
             }else 
-                stackCalc.Push(Double.valueOf(postfix.charAt(i)));
+                stackCalc.Push(Double.parseDouble(""+postfix.charAt(i)));
         }
         
         return stackCalc.Pop();
