@@ -7,29 +7,20 @@ public class DataStructures {
     public static void main(String[] args) {
         //Creating Linked Based Stack For Testing Purposes
         //test is an ID(identifier) of Object of user Defined Class LinkedStack 
-      //LinkedStack test = new LinkedStack();
+        LinkedStack test = new LinkedStack();
 
-      //for (int i = 0; i < 5; i++) 
-          //test.Push(i); // Filling Stack with values from 0 to 4
+        for (int i = 0; i < 5; i++) 
+            test.Push(i); // Filling Stack with values from 0 to 4
         
 
         //Dispaly Stack in Reverse Order Without Changing the Stack
-      //Display_Reverse(test);
+        Display_Reverse(test);
 
         //Asking if number 2 is in Stack
-      //System.out.println(Search(test, 2)); // Prints true
-            
+        System.out.println(Search(test, 2)); // Prints true
       
-      Scanner input = new Scanner(System.in);
-      
-      String s = input.nextLine();
-      
-      //System.out.println(Project1.infix_postfix("(A/B*(C+(D-E))"));
-      System.out.println(Project1.infix_postfix(s));
-      
-      s = input.nextLine();
-      
-      //System.out.println(Project1.postfix_value("234+*"));
+      String s = Project1.infix_postfix("3*(4+5)-6/(1+2)");
+      System.out.println(s);
       System.out.println(Project1.postfix_value(s));
       
     }

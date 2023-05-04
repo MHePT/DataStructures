@@ -34,12 +34,13 @@ public class Project1 {
 
                         stack.Push(infix.charAt(i));
 
-                } else {
-
-                    while (priority(infix.charAt(i)) <= priority(stack.Peek())) 
+                } else {                    
+                   
+                    while (!stack.isEmpty() && priority(infix.charAt(i)) <= priority(stack.Peek())) 
                         postfix += stack.Pop();
                     
                     stack.Push(infix.charAt(i));
+                    
                 }
 
             } else if (priority(infix.charAt(i)) != -1 && stack.isEmpty())
@@ -134,7 +135,7 @@ public class Project1 {
     
     private static boolean isValid_Infix(String infix){
         
-        Pattern pattern = Pattern.compile("[a-zA-Z]");
+        Pattern pattern = Pattern.compile("[a-zA-Z0-9]");
         Matcher matcher = pattern.matcher(infix);
         
         return matcher.find();
