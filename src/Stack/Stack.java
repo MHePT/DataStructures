@@ -1,15 +1,15 @@
-package data.structures;
+package Stack;
 
 public class Stack <T> {
 
     private Node<T> Top = null;
 
-    boolean isEmpty() {
+    public boolean isEmpty() {
         return Top == null;
     }
 
     
-    boolean Push(T Data) {
+    public boolean Push(T Data) {
         
         Node newNode = new Node(Data);
         newNode.Next = Top;
@@ -19,7 +19,7 @@ public class Stack <T> {
     }
 
     
-    T Pop() {
+    public T Pop() {
         
         if (!isEmpty()) {
             
@@ -33,7 +33,7 @@ public class Stack <T> {
     }
 
     
-    T Peek() {
+    public T Peek() {
         
         if (!isEmpty()) 
             return Top.Data;
@@ -42,7 +42,7 @@ public class Stack <T> {
     }
     
 
-    int Size(){
+    public int Size(){
         
         int size = 0;
         Node Runner = Top;

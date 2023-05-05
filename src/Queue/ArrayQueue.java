@@ -1,4 +1,4 @@
-package data.structures;
+package Queue;
 
 public class ArrayQueue {
     

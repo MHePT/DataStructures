@@ -1,4 +1,4 @@
-package data.structures;
+package LinkedLists;
 
 public class Double_Node<T> {
     
