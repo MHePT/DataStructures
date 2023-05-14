@@ -1,14 +1,16 @@
 package data.structures;
 
+import Project2.Polynomial;
 import Stack.LinkedStack;
 
 public class DataStructures {
 
     public static void main(String[] args) {
         
-        Test_LinkedList();
-        Test_Project1();
-        Test_Tree();
+        //Test_LinkedList();
+        //Test_Project1();
+        //Test_Tree();
+        Test_Project2();
       
     }
     
@@ -56,6 +58,42 @@ public class DataStructures {
         String s = Project1.infix_postfix("3*(4+5)-6/(1+2)");
         System.out.println(s);
         System.out.println(Project1.postfix_value(s));
+        
+    }
+    
+    static void Test_Project2(){
+        
+        Polynomial p1 = new Polynomial();
+        p1.Insert(2, 3);
+        p1.Insert(2, 0);
+        p1.Insert(2, 2);
+        
+        p1.Display();
+        
+        System.out.println("***********************************************");
+        
+        Polynomial p2 = new Polynomial();
+        p2.Insert(2, 3);
+        p2.Insert(2, 0);
+        p2.Insert(2, 2);
+        
+        p2.Display();
+        
+        System.out.println("***********************************************");
+        
+        (p1.Plus(p2)).Display();
+                
+        System.out.println("***********************************************");
+        
+        (p1.Minus(p2)).Display();
+                
+        System.out.println("***********************************************");
+        
+        (p1.Times(p2)).Display();
+        
+        System.out.println("***********************************************");
+        
+        System.out.println(p1.Evaluate(2));
         
     }
     
