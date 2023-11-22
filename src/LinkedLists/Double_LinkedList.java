@@ -63,9 +63,10 @@ public class Double_LinkedList<T> {
         
         if(First == Last)
             First = Last = null;
-        
+        else{
         Last = Last.Previous;
         Last.Next = Last.Next.Previous = null;
+        }
         
         return Result;
         

@@ -64,18 +64,16 @@ public class DataStructures {
     static void Test_Project2(){
         
         Polynomial p1 = new Polynomial();
-        p1.Insert(2, 3);
-        p1.Insert(2, 0);
-        p1.Insert(2, 2);
+        p1.Insert(6, 1);
+        p1.Insert(-9, 0);
         
         p1.Display();
         
         System.out.println("***********************************************");
         
         Polynomial p2 = new Polynomial();
-        p2.Insert(2, 3);
+        p2.Insert(7, 1);
         p2.Insert(2, 0);
-        p2.Insert(2, 2);
         
         p2.Display();
         
@@ -89,11 +87,13 @@ public class DataStructures {
                 
         System.out.println("***********************************************");
         
-        (p1.Times(p2)).Display();
+        
+        Polynomial p3 =p1.Times(p2);
+        p3.Display();
         
         System.out.println("***********************************************");
         
-        System.out.println(p1.Evaluate(2));
+        System.out.println(p3.Evaluate(2));
         
     }
     

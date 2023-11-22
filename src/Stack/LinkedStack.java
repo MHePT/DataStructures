@@ -43,7 +43,7 @@ public class LinkedStack {
 
     //Returns The Data Of The Top
     public int Peek() {
-        /*If The Satck is NOT Empty It will
+        /*If The Stack is NOT Empty It will
         End The Function And Return The Data as an Output*/
         if (!isEmpty()) 
             return Top.Data;

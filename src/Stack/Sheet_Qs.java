@@ -10,7 +10,7 @@ public class Sheet_Qs {
             return true;
         
 
-        if (Run1 == null || Run2 == null) 
+        if (Run1 == null || Run2 == null)
             return false;
         
 
